@@ -1,12 +1,14 @@
-# Eleventy Starter Boilerplate
+---
+title: 'Eleventy Starter Boilerplate Presentation'
+description: Everything you need to use this Eleventy Boilerplate template
+date: 2020-01-01 00:00:00
+---
 
-<p align="center">
-  <a href="https://creativedesignsguru.com/demo/Eleventy-Starter-Boilerplate/eleventy-starter-boilerplate-presentation/"><img src="public/assets/images/eleventy-js-starter-boilerplate.png?raw=true" alt="Eleventy starter banner"></a>
-</p>
+# Eleventy Starter Boilerplate
 
 🚀 Eleventy Starter Boilerplate is production-ready with SEO-friendly for quickly starting a blog. ⚡️ Built with [Eleventy](https://www.11ty.dev), [ESLint](https://eslint.org), [Prettier](https://prettier.io), [Webpack](https://webpack.js.org), [PostCSS](https://postcss.org), [Tailwind CSS](https://tailwindcss.com).
 
-Clone this project and use it to create your own [Eleventy](https://www.11ty.dev) blog. You can check a [Eleventy templates demo](https://creativedesignsguru.com/demo/Eleventy-Starter-Boilerplate/eleventy-starter-boilerplate-presentation/).
+Clone this project and use it to create your own [Eleventy](https://www.11ty.dev) blog.
 
 ### Features
 
@@ -56,7 +58,7 @@ Production-ready in mind:
 
 Run the following command on your local environment:
 
-```
+```shell
 git clone --depth=1 https://github.com/ixartz/Eleventy-Starter-Boilerplate.git my-project-name
 cd my-project-name
 npm install
@@ -64,7 +66,7 @@ npm install
 
 Then, you can run locally in development mode with live reload:
 
-```
+```shell
 npm run dev
 ```
 
@@ -72,7 +74,7 @@ Open http://localhost:8080 with your favorite browser to see your blog.
 
 ### Project structure
 
-```
+```shell
 .
 ├── public             # Static files
 │   └── assets
@@ -102,7 +104,7 @@ You can easily configure Eleventy Starter Boilerplate. Please change the followi
 
 You can see the results locally in production mode with:
 
-```
+```shell
 npm run serve
 ```
 
@@ -110,7 +112,7 @@ The generated HTML and CSS files are minified. It will also removed unused CSS f
 
 You can create an optimized production build with:
 
-```
+```shell
 npm run build
 ```
 
@@ -130,7 +132,7 @@ Everyone is welcome to contribute to this project. Feel free to open an issue if
 
 Licensed under the MIT License, Copyright © 2020
 
-See [LICENSE](LICENSE) for more information.
+See [LICENSE](https://github.com/ixartz/Eleventy-Starter-Boilerplate/blob/master/LICENSE) for more information.
 
 ---
 
