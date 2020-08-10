@@ -1,0 +1,10 @@
+/node_modules
+
+/_site
+
+/src/_includes/layouts/webpack.ejs
+.lazyimages.json
+
+.DS_Store
+Thumbs.db
+npm-debug.log*
