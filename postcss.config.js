@@ -1,19 +1,7 @@
-/* eslint-disable import/no-extraneous-dependencies, global-require */
-const plugins = [require('tailwindcss'), require('autoprefixer')];
-
-if (process.env.NODE_ENV === 'production') {
-  plugins.push(
-    require('cssnano')({
-      preset: [
-        'default',
-        {
-          discardComments: {
-            removeAll: true,
-          },
-        },
-      ],
-    }),
-  );
-}
-
-module.exports = { plugins };
+module.exports = {
+  plugins: [
+    require('postcss-import'),
+    require('tailwindcss'),
+    require('postcss-preset-env')({ stage: 3 }),
+  ],
+};

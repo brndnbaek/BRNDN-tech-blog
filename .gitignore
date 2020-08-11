@@ -1,10 +1,23 @@
-/node_modules
+# dependecies installed by npm
+node_modules
+web_modules
 
-/_site
+# build artefacts
+.build
+dist
+src/_output
 
-/src/_includes/layouts/webpack.ejs
-.lazyimages.json
+# secrets
+.env
 
+# logs
+*.log
+
+# macOS related files
 .DS_Store
-Thumbs.db
-npm-debug.log*
+
+# version manager
+.tool-versions
+
+# Local Netlify folder
+.netlify

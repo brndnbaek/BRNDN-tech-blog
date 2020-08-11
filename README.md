@@ -1,137 +1,62 @@
-# Eleventy Starter Boilerplate
+# 📦 11st-Starter-Kit
 
-<p align="center">
-  <a href="https://creativedesignsguru.com/demo/Eleventy-Starter-Boilerplate/eleventy-starter-boilerplate-presentation/"><img src="public/assets/images/eleventy-js-starter-boilerplate.png?raw=true" alt="Eleventy starter banner"></a>
-</p>
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/ec6da587-72ba-490a-ad4b-167802a9c197/deploy-status)](https://app.netlify.com/sites/11st-starter-kit/deploys)
 
-🚀 Eleventy Starter Boilerplate is production-ready with SEO-friendly for quickly starting a blog. ⚡️ Built with [Eleventy](https://www.11ty.dev), [ESLint](https://eslint.org), [Prettier](https://prettier.io), [Webpack](https://webpack.js.org), [PostCSS](https://postcss.org), [Tailwind CSS](https://tailwindcss.com).
+[11ty](https://www.11ty.dev/), powered by [Snowpack](https://www.snowpack.dev/)
+with [tailwindcss](https://tailwindcss.com).
 
-Clone this project and use it to create your own [Eleventy](https://www.11ty.dev) blog. You can check a [Eleventy templates demo](https://creativedesignsguru.com/demo/Eleventy-Starter-Boilerplate/eleventy-starter-boilerplate-presentation/).
+## Install Dependencies
 
-### Features
+First, make sure you have `npm` (packaged with
+[Node.js](https://nodejs.org)) installed, then run `npm i` to install the
+dependencies.
 
-Production-ready in mind:
+## Available Scripts
 
-- 🔥 [11ty](https://www.11ty.dev) for Static Site Generator
-- 🎨 Integrate with [Tailwind CSS](https://tailwindcss.com) (with [PurgeCSS](https://purgecss.com), remove unused CSS)
-- 💅 [PostCSS](https://postcss.org) for processing [Tailwind CSS](https://tailwindcss.com)
-- ⚡️ Lazy load images with [lazysizes](https://github.com/aFarkas/lazysizes)
-- ✨ Compress image with [Imagemin](https://github.com/imagemin/imagemin)
-- 🎈 Syntax Highlighting with [Prism.js](https://prismjs.com)
-- ☕ Minify HTML & CSS with [HTMLMinifier](https://www.npmjs.com/package/html-minifier) and [cssnano](https://cssnano.co)
-- ✏️ Linter with [ESLint](https://eslint.org)
-- 🛠 Code Formatter with [Prettier](https://prettier.io)
-- 💨 Live reload
-- 📦 Module Bundler with [Webpack](https://webpack.js.org)
-- 🦊 Templating with [EJS](https://ejs.co)
-- 🤖 SEO metadata and [Open Graph](https://ogp.me/) tags
-- ⚙️ [JSON-LD](https://developers.google.com/search/docs/guides/intro-structured-data) for richer indexing
-- 🗺 Sitemap.xml
-- ⚠️ 404 page
-- 📖 Pagination
-- ✅ Cache busting
-- 💯 Maximize lighthouse score
+### Development
 
-### Philosophy
-
-- Minimal code (HTML, CSS & JS). Add what you need
-- SEO-friendly
-- 🚀 Production-ready
-
-### Requirements
-
-- Node.js and npm
-
-### Premium Themes
-
-| [Blue Dark Eleventy Theme](https://creativedesignsguru.com/blue-dark-eleventy-theme/) | [Blue Eclatant Eleventy Theme](https://creativedesignsguru.com/blue-eclatant-eleventy-theme/) |
-| --- | --- |
-| [![Blue Dark Eleventy Theme premium](https://creativedesignsguru.com/assets/images/themes/blue-dark-mode-eleventy-theme-homepage-xs.png)](https://creativedesignsguru.com/blue-dark-eleventy-theme/) | [![Blue Eclatant Eleventy Theme premium](https://creativedesignsguru.com/assets/images/themes/eclatant-blue-eleventy-theme-homepage-xs.png)](https://creativedesignsguru.com/blue-eclatant-eleventy-theme/) |
-
-| [Blue Modern Eleventy Theme](https://creativedesignsguru.com/blue-modern-eleventy-theme/) | [Blue Minimalist Eleventy Theme](https://creativedesignsguru.com/blue-minimalist-eleventy-theme/) |
-| --- | --- |
-| [![Blue Modern Eleventy Theme premium](https://creativedesignsguru.com/assets/images/themes/modern-blue-eleventy-theme-homepage-xs.png)](https://creativedesignsguru.com/blue-modern-eleventy-theme/) | [![Blue Minimalist Eleventy Theme premium](https://creativedesignsguru.com/assets/images/themes/minimalist-blue-eleventy-theme-homepage-xs.png)](https://creativedesignsguru.com/blue-minimalist-eleventy-theme/) |
-
-### Getting started
-
-Run the following command on your local environment:
-
-```
-git clone --depth=1 https://github.com/ixartz/Eleventy-Starter-Boilerplate.git my-project-name
-cd my-project-name
-npm install
+```bash
+# runs the app in the development mode.
+npm start
 ```
 
-Then, you can run locally in development mode with live reload:
+Open http://localhost:8080 to view it in the browser.
 
-```
-npm run dev
-```
+The page will reload if you make edits.
+You will also see any lint errors in the console.
 
-Open http://localhost:8080 with your favorite browser to see your blog.
+### Production
 
-### Project structure
-
-```
-.
-├── public             # Static files
-│   └── assets
-│       └── images     # Images not needed by Webpack
-└── src
-    ├── _data          # Eleventy data folder
-    ├── _includes
-    │   └── layouts    # HTML layout files
-    ├── assets         # Assets folder that needs to be processed by Webpack
-    │   ├── images
-    │   │   └── posts  # Images used in your blog posts (will be compressed by Webpack)
-    │   └── styles     # Your blog CSS files
-    └── posts          # Your blog posts
-```
-
-### Customization
-
-You can easily configure Eleventy Starter Boilerplate. Please change the following file:
-
-- `public/assets/images/logo.png`: your blog logo
-- `public/apple-touch-icon.png`, `public/favicon.ico`, `public/favicon-16x16.png` and `public/favicon-32x32.png`: your blog favicon, you can generate from https://favicon.io/favicon-converter/
-- `src/_data/site.json`: your blog configuration
-- `src/_includes/layouts`: your blog HTML layout
-- `src/assets/styles/main.css`: your blog CSS file using Tailwind CSS
-
-### Deploy to production
-
-You can see the results locally in production mode with:
-
-```
-npm run serve
-```
-
-The generated HTML and CSS files are minified. It will also removed unused CSS from [Tailwind CSS](https://tailwindcss.com).
-
-You can create an optimized production build with:
-
-```
+```bash
+# builds a static copy of your site to the `dist/` folder.
 npm run build
 ```
 
-Now, your blog is ready to be deployed. All generated files are located at `_site` folder, which you can deploy with any hosting service.
+Your app is ready to be deployed!
 
-### Deploy to Netlify
+To increase the production performance
+[@snowpack/plugin-parcel](https://github.com/pikapkg/create-snowpack-app/tree/master/packages/plugin-parcel)
+is added to the `snowpack.config.json` config file.
 
-Clone this repository on own GitHub account and deploy to Netlify:
+## Netlify
 
-[![Netlify Deploy button](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/ixartz/Eleventy-Starter-Boilerplate)
+To get your own instance of this 11st-Starter-Kit cloned and deploying to
+Netlify very quickly, just click the button below and follow the instructions.
 
-### Contributions
+[<img src="https://www.netlify.com/img/deploy/button.svg" />](https://app.netlify.com/start/deploy?repository=https://github.com/stefanfrede/11st-starter-kit)
 
-Everyone is welcome to contribute to this project. Feel free to open an issue if you have question or found a bug.
+### Add some Netlify helpers
+Netlify Dev adds the ability to use Netlify redirects, proxies, and serverless functions.
 
-### License
+```bash
+# install the Netlify CLI in order to get netlify dev
+npm install -g netlify-cli
 
-Licensed under the MIT License, Copyright © 2020
+# run a local server with some added Netlify sugar
+netlify dev
+```
 
-See [LICENSE](LICENSE) for more information.
+## License
 
----
-
-Made with ♥ by [Ixartz](https://github.com/ixartz)
+This project is open source and available under the [MIT License](LICENSE).

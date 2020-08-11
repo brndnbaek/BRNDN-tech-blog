@@ -1,48 +1,55 @@
-const htmlmin = require("html-minifier");
-const dateFns = require("date-fns");
-const lazyImagesPlugin = require("eleventy-plugin-lazyimages");
-const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
+const { Liquid } = require('liquidjs');
 
-module.exports = function (eleventyConfig) {
-  eleventyConfig.addPlugin(syntaxHighlight);
+const liquidOptions = {
+  extname: '.liquid',
+  strict_filters: true,
+  root: ['_includes'],
+};
 
-  eleventyConfig.addPlugin(lazyImagesPlugin, {
-    transformImgPath: (imgPath) => {
-      if (imgPath.startsWith("http://") || imgPath.startsWith("https://")) {
-        // Handle remote file
-        return imgPath;
-      } else {
-        return `./src/${imgPath}`;
-      }
+const liquidEngine = new Liquid(liquidOptions);
+
+const ErrorOverlay = require('eleventy-plugin-error-overlay');
+const fs = require('fs');
+
+module.exports = function (config) {
+  config.setLibrary('liquid', liquidEngine);
+
+  // Layout aliases
+  config.addLayoutAlias('default', 'layouts/base.liquid');
+
+  // Static assets to pass through
+  config.addPassthroughCopy('./src/fonts');
+  config.addPassthroughCopy('./src/images');
+  config.addPassthroughCopy('./src/styles');
+  config.addPassthroughCopy('./src/robots.txt');
+
+  // 11ty error overlay
+  // https://github.com/stevenpetryk/eleventy-plugin-error-overlay
+  config.addPlugin(ErrorOverlay);
+
+  // 404
+  config.setBrowserSyncConfig({
+    callbacks: {
+      ready: function (err, browserSync) {
+        const content_404 = fs.readFileSync('dist/404.html');
+
+        browserSync.addMiddleware('*', (req, res) => {
+          // Provides the 404 content without redirect.
+          res.write(content_404);
+          res.end();
+        });
+      },
     },
-  });
-
-  eleventyConfig.setEjsOptions({
-    rmWhitespace: true,
-    context: {
-      dateFns,
-    },
-  });
-
-  eleventyConfig.setBrowserSyncConfig({
-    files: "./_site/assets/styles/main.css",
-  });
-
-  eleventyConfig.addTransform("htmlmin", (content, outputPath) => {
-    if (outputPath.endsWith(".html")) {
-      const minified = htmlmin.minify(content, {
-        useShortDoctype: true,
-        removeComments: true,
-        collapseWhitespace: true,
-        minifyJS: true,
-      });
-      return minified;
-    }
-
-    return content;
   });
 
   return {
-    dir: { input: "src", output: "_site", data: "_data" },
+    dir: {
+      input: 'src',
+      output: 'src/_output',
+    },
+    passthroughFileCopy: true,
+    templateFormats: ['md', 'liquid'],
+    htmlTemplateEngine: 'liquid',
+    markdownTemplateEngine: 'liquid',
   };
 };
