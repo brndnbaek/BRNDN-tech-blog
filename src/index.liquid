@@ -10,9 +10,13 @@ permalink: "{% if pagination.pageNumber>0 %}page-{{pagination.pageNumber | plus:
 ---
 <style>
 .rise {
-  bottom:25%;
+  
   transition:1s ease;
   opacity: 0;
+  left: 50%;
+  bottom:25%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
 }
 .blog_box:hover .rise{
   opacity:1;
@@ -21,18 +25,27 @@ permalink: "{% if pagination.pageNumber>0 %}page-{{pagination.pageNumber | plus:
 <div class="grid grid-flow-row-dense gap-4 grid-cols-1 w-11/12 md:w-5/6 mx-auto">
 
   {% for item in list %}
-    <div class="relative z-0 bg-cover bg-center bg-no-repeat mb-10 overflow-hidden blog_box neomorph " 
-    style="background-image: linear-gradient(to left top, rgba(0, 0, 0, 0.2), #1a202c),
-				url({{item.data.heroImage}}); padding-bottom:25vh;">
-      <a class="relative text-gray-200 font-bold mt-5 ml-5 textGradient_sky" style="font-size:6.5vw;" href="{{item.url | url}}">{{item.data.title}}</a>
+  
+  
+    <div class="relative z-0 bg-cover bg-center bg-no-repeat mb-10 overflow-hidden blog_box neomorph"
+    style="background-image: linear-gradient(to left top, rgba(0, 0, 0, 0.15), #1a202c),
+  				url({{item.data.heroImage}}); padding-bottom:25vh;">
+      <a class="relative text-gray-200 font-bold mt-5 ml-5 " style="font-size:6.5vw;" href="{{item.url | url}}">{{item.data.title}}</a>
       <p class="absolute bottom-0 left-0 mb-4 text-base">
+
+        
+
         {% for tag in item.data.tags %}
-        <span class="bg-green-500 rounded-md border-green-600 hover:bg-orange-500 border-1 p-1 text-gray-900 ml-2"><a href="tags/{{tag|url}}">#{{tag}}</a></span>
+        <span class="rounded-md border-green-600 hover:bg-orange-500 border-1 p-1 ml-2">
+        <svg class="inline-block" height="21" width="21" xmlns="http://www.w3.org/2000/svg">
+        <g fill="none" fill-rule="evenodd" transform="translate(2 3)">
+        <path d="M11.454.954h3.586a2 2 0 012 2V6.54a1 1 0 01-.293.707L9.454 14.54a2 2 0 01-2.828 0l-3.172-3.172a2 2 0 010-2.828l7.293-7.293a1 1 0 01.707-.293z" stroke="#2a2e3b" stroke-linecap="round" stroke-linejoin="round"/><path d="M6.04 13.954l-.903.602a2 2 0 01-2.982-.962l-1.53-4.08a2 2 0 01.844-2.417l8.57-5.143" stroke="#2a2e3b" stroke-linecap="round" stroke-linejoin="round"/><rect fill="#2a2e3b" height="2" rx="1" width="2" x="13.54" y="2.454"/></g></svg>
+        <a class="fill-current text-gray-200" href="tags/{{tag|url}}">{{tag}}</a></span>
         {%endfor%}
       </p>
-      <div class="absolute rise inset-x-0 " >
+      <div class="absolute rise " >
         <p class="text-center block text-lg md:text-xl" >{{item.data.description}}</p>
-        <a class="text-center block text-base md:text-lg" href="{{item.url}}"><button class="p-1 rounded-md bg-blue-400 hover:bg-blue-700 text-gray-800">Read More</button></a>
+        <a class="text-center block text-base md:text-lg" href="{{item.url}}"><button class="p-1 rounded-md bg-green-400 hover:bg-green-700 text-gray-800">Read More</button></a>
       </div>
     </div>
   {% endfor %}
@@ -45,3 +58,5 @@ permalink: "{% if pagination.pageNumber>0 %}page-{{pagination.pageNumber | plus:
   <li>{% if pagination.href.next %}<a href="{{ pagination.href.next }}">Next Page</a>{% endif %}</li>
 </ul>
 </div>
+
+
