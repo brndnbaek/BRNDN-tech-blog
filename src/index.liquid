@@ -1,14 +1,47 @@
 ---
 layout: default
-title: 11ty + Snowpack + tailwind starter kit
+title: Brandon's Tech Blog
+pagination:
+  data: collections.all 
+  size: 10
+  alias: list
+  reverse: true
+permalink: "{% if pagination.pageNumber>0 %}page-{{pagination.pageNumber | plus: 1}}{%endif%}/index.html"
 ---
+<style>
+.rise {
+  bottom:25%;
+  transition:1s ease;
+  opacity: 0;
+}
+.blog_box:hover .rise{
+  opacity:1;
+}
+</style>
+<div class="grid grid-flow-row-dense gap-4 grid-cols-1 w-11/12 md:w-5/6 mx-auto">
 
-<p class="flex flex-auto items-center justify-center overflow-hidden mb-6">
-  <canvas id="canvas"></canvas>
-</p>
+  {% for item in list %}
+    <div class="relative z-0 bg-cover bg-center bg-no-repeat mb-10 overflow-hidden blog_box neomorph " 
+    style="background-image: linear-gradient(to left top, rgba(0, 0, 0, 0.2), #1a202c),
+				url({{item.data.heroImage}}); padding-bottom:25vh;">
+      <a class="relative text-gray-200 font-bold mt-5 ml-5 textGradient_sky" style="font-size:6.5vw;" href="{{item.url | url}}">{{item.data.title}}</a>
+      <p class="absolute bottom-0 left-0 mb-4 text-base">
+        {% for tag in item.data.tags %}
+        <span class="bg-green-500 rounded-md border-green-600 hover:bg-orange-500 border-1 p-1 text-gray-900 ml-2"><a href="tags/{{tag|url}}">#{{tag}}</a></span>
+        {%endfor%}
+      </p>
+      <div class="absolute rise inset-x-0 " >
+        <p class="text-center block text-lg md:text-xl" >{{item.data.description}}</p>
+        <a class="text-center block text-base md:text-lg" href="{{item.url}}"><button class="p-1 rounded-md bg-blue-400 hover:bg-blue-700 text-gray-800">Read More</button></a>
+      </div>
+    </div>
+  {% endfor %}
+</div>
 
-<a href="/about">
-  About Page
-</a>
+<div class="pt-10">
+<ul class="flex justify-center">
+  <li>{% if pagination.href.previous %}<a href="{{ pagination.href.previous }}">Previous Page</a>{% endif %}</li>
 
-<script type="module" src="/_dist_/index.js"></script>
+  <li>{% if pagination.href.next %}<a href="{{ pagination.href.next }}">Next Page</a>{% endif %}</li>
+</ul>
+</div>

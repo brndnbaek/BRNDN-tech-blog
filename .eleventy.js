@@ -16,6 +16,7 @@ module.exports = function (config) {
 
   // Layout aliases
   config.addLayoutAlias('default', 'layouts/base.liquid');
+  config.addLayoutAlias('single', 'layouts/single.liquid');
 
   // Static assets to pass through
   config.addPassthroughCopy('./src/fonts');

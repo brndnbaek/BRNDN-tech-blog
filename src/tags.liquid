@@ -1,0 +1,26 @@
+---
+pagination:
+  data: collections
+  size: 1
+  alias: hashtag
+  filter:
+    - all
+    - nav
+    - post
+    - posts
+    - tagList
+    - blogs
+    - blog
+  addAllPagesToCollections: false
+layout: default
+eleventyComputed:
+  title: Articles Tagged - “{{ hashtag }}”
+permalink: /tags/{{ hashtag }}/
+eleventyExcludeFromCollections: true
+---
+<div>Articles tagged with {{hashtag}}</div>
+<ol>
+{% for item in collections[hashtag] | reverse %}
+<li><a href="{{item.url | url}}">{{item.data.title}}</a></li>
+{%endfor%}
+</ol>

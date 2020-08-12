@@ -22,9 +22,49 @@
   src: url('/fonts/Inter-italic.var.woff2?v=3.12') format('woff2');
 }
 
+@font-face {
+  font-display: swap;
+  font-family: 'Bazzi';
+  font-named-instance: 'Regular';
+  font-style: normal;
+  font-weight: normal;
+  src: url('/fonts/Bazzi.woff') format('woff');
+}
+
+
 #canvas {
   display: block;
   height: 420px;
   margin: 0rem auto;
   width: 720px;
+}
+
+body {
+  @apply font-kor;
+  @apply text-gray-300;
+}
+
+#menu-toggle:checked + #menu {
+  display: block;
+}
+
+.masonry:nth-child(2n) {
+  @apply col-span-2;
+}
+
+.neomorph {
+  box-shadow: 
+    10px 10px 30px 0 #101010,
+    -10px -10px 30px 0 #151515;
+}
+
+.textGradient_sky {
+  background: -webkit-linear-gradient(90deg,#6dd5fa,#fff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.textGradient_blue {
+  background: -webkit-linear-gradient(90deg,#0575e6,#00f260);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }

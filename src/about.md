@@ -1,6 +1,7 @@
 ---
 layout: default
 title: '11ty + Snowpack + tailwind starter kit :: About'
+eleventyExcludeFromCollections: true
 ---
 
 # About
