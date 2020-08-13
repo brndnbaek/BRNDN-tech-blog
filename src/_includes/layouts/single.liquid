@@ -7,11 +7,13 @@
 
   {% include "partial_nav.liquid" %}
 
-  <div class="mx-auto p-4 neomorph rounded-md prose md:prose-lg lg:prose-2xl flex flex-col"
+  <div class="mx-auto w-4/5 p-4 neomorph rounded-md prose md:prose-lg lg:prose-xl max-w-none flex flex-col"
   style="background: linear-gradient(to top,#d3cce3,#e9e4f0);">
     <h1 class="text-center">{{title}}</h1>
     <img src="{{heroImage}}" alt="">
-    {{ content }}
+    <div class="p-4">
+      {{ content }}
+    </div>
 
   </div>
   <div id="disqus_thread" class="prose md:prose-lg lg:prose-2xl mx-auto"></div>
