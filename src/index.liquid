@@ -42,7 +42,9 @@ permalink: "{% if pagination.pageNumber>0 %}page-{{pagination.pageNumber | plus:
         <path d="M11.454.954h3.586a2 2 0 012 2V6.54a1 1 0 01-.293.707L9.454 14.54a2 2 0 01-2.828 0l-3.172-3.172a2 2 0 010-2.828l7.293-7.293a1 1 0 01.707-.293z" stroke="#2a2e3b" stroke-linecap="round" stroke-linejoin="round"/><path d="M6.04 13.954l-.903.602a2 2 0 01-2.982-.962l-1.53-4.08a2 2 0 01.844-2.417l8.57-5.143" stroke="#2a2e3b" stroke-linecap="round" stroke-linejoin="round"/><rect fill="#2a2e3b" height="2" rx="1" width="2" x="13.54" y="2.454"/></g></svg>
         <a class="fill-current text-gray-200" href="tags/{{tag|url}}">{{tag}}</a></span>
         {%endfor%}
+
       </p>
+      <p class="absolute bottom-0 right-0 mb-4 text-lg text-gray-800"><a class="mr-4 rounded-md bg-green-300 p-2" href="{{item.url|url}}#disqus_thread">Post a comment</a></p>
       <div class="absolute rise " >
         <p class="text-center block text-lg md:text-xl" >{{item.data.description}}</p>
         <a class="text-center block text-base md:text-lg" href="{{item.url}}"><button class="p-1 rounded-md bg-green-400 hover:bg-green-700 text-gray-800">Read More</button></a>
