@@ -10,9 +10,12 @@ const liquidEngine = new Liquid(liquidOptions);
 
 const ErrorOverlay = require('eleventy-plugin-error-overlay');
 const fs = require('fs');
-
+const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 module.exports = function (config) {
   config.setLibrary('liquid', liquidEngine);
+  
+  // markdown syntax highlight
+  config.addPlugin(syntaxHighlight);
 
   // Layout aliases
   config.addLayoutAlias('default', 'layouts/base.liquid');
