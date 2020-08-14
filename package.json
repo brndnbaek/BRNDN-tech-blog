@@ -45,6 +45,7 @@
   },
   "devDependencies": {
     "@11ty/eleventy-plugin-syntaxhighlight": "^3.0.1",
+    "@snowpack/plugin-webpack": "^2.0.2",
     "babel-eslint": "^10.1.0",
     "browserslist": "^4.14.0",
     "eslint": "^7.6.0",

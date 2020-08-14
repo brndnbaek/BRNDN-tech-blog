@@ -8,6 +8,58 @@ pagination:
   reverse: true
 permalink: "{% if pagination.pageNumber>0 %}page-{{pagination.pageNumber | plus: 1}}{%endif%}/index.html"
 ---
+{% assign targetIndex = list.length %}
+{% assign latest = list.first %}
+<style>
+			.imageOverlay::after {
+				content: "";
+				position: absolute;
+				top: 0;
+				right: 0;
+				width: 90%;
+				height: 90%;
+				background-image: radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.7), #1a202c),
+				url({{latest.data.heroImage}});
+				background-size: cover;
+				background-position: center;
+				background-repeat: no-repeat;
+				opacity: 0.7;
+			}
+</style>
+
+<div class="flex pt-10 pl-4 md:ml-8 md:w-2/3">
+  <div class="relative pb-20 imageOverlay">
+    <div class="relative z-50 text-gray-300">
+
+      <p class="inline-block pr-4 text-lg font-bold md:text-xl">Latest Article</p><span class="inline-block text-lg text-gray-500">{{latest.date | date:"%b %d, %Y"}}</span>
+      <p class="py-4 text-2xl font-bold text-blue-300 md:text-4xl">{{latest.data.title}}</p>
+      
+      <div class="flex justify-start py-4">
+        <img src="/images/mickey.jpg" alt="" class="object-cover object-center w-24 h-24 m-4 border-4 border-green-500 rounded-full">
+        <div class="flex flex-col justify-center text-lg md:text-xl">
+          <p class="text-gray-600">Author</p>
+          <p class="font-serif">Brandon Baek</p>
+        </div>
+      </div>
+      
+      <div>
+        {% for tag in latest.data.tags %}
+          {% if tag != 'blog' %}
+            <span class="border-green-600 rounded-md hover:bg-orange-500 border-1">
+            <svg class="inline-block text-orange-500 fill-current" height="21" width="21" xmlns="http://www.w3.org/2000/svg">
+            <g fill-rule="evenodd" transform="translate(2 3)">
+            <path d="M11.454.954h3.586a2 2 0 012 2V6.54a1 1 0 01-.293.707L9.454 14.54a2 2 0 01-2.828 0l-3.172-3.172a2 2 0 010-2.828l7.293-7.293a1 1 0 01.707-.293z" stroke="#2a2e3b" stroke-linecap="round" stroke-linejoin="round"/><path d="M6.04 13.954l-.903.602a2 2 0 01-2.982-.962l-1.53-4.08a2 2 0 01.844-2.417l8.57-5.143" stroke="#2a2e3b" stroke-linecap="round" stroke-linejoin="round"/><rect fill="#2a2e3b" height="2" rx="1" width="2" x="13.54" y="2.454"/></g></svg>
+            <a class="text-yellow-300 fill-current" href="tags/{{tag|url}}">{{tag}}</a></span>
+          {%endif%}
+        {%endfor%}
+      </div>
+
+      <div class="flex py-4 text-lg">{{latest.data.description}}</div>
+      <div class=""><a href="{{latest.url}}" class="p-1 text-xl border-b-2 border-green-600 hover:bg-green-600">Read Article</a></div>
+    </div>
+  </div>
+</div>
+
 <style>
 .rise {
   
@@ -22,28 +74,27 @@ permalink: "{% if pagination.pageNumber>0 %}page-{{pagination.pageNumber | plus:
   opacity:1;
 }
 </style>
-<div class="flex flex-row gap-4 flex-wrap w-11/12 md:w-5/6 justify-between mx-auto">
-
+<div class="flex flex-wrap w-11/12 gap-4 mx-auto justify-evenly md:w-5/6">
   {% for item in list %}
-  
-  
-    <div class="relative z-0 bg-cover bg-center bg-no-repeat overflow-hidden blog_box neomorph flex-1 m-4"
+    <div class="z-0 flex-none m-2 bg-center bg-no-repeat bg-cover blog_box neomorph"
     style="background-image: linear-gradient(to left top, rgba(0, 0, 0, 0.5), #1a202c),
-  				url({{item.data.heroImage}});">
-      <a class="relative text-gray-200 font-bold mt-10 textGradient_sky text-center block py-16" style="font-size:3vw;" href="{{item.url | url}}">{{item.data.title}}</a>
-      <p class="absolute bottom-0 left-0 mb-4 text-base">
-        {% for tag in item.data.tags %}
-        <span class="rounded-md border-green-600 hover:bg-orange-500 border-1 p-1 ml-2">
-        <svg class="inline-block" height="21" width="21" xmlns="http://www.w3.org/2000/svg">
-        <g fill="none" fill-rule="evenodd" transform="translate(2 3)">
-        <path d="M11.454.954h3.586a2 2 0 012 2V6.54a1 1 0 01-.293.707L9.454 14.54a2 2 0 01-2.828 0l-3.172-3.172a2 2 0 010-2.828l7.293-7.293a1 1 0 01.707-.293z" stroke="#2a2e3b" stroke-linecap="round" stroke-linejoin="round"/><path d="M6.04 13.954l-.903.602a2 2 0 01-2.982-.962l-1.53-4.08a2 2 0 01.844-2.417l8.57-5.143" stroke="#2a2e3b" stroke-linecap="round" stroke-linejoin="round"/><rect fill="#2a2e3b" height="2" rx="1" width="2" x="13.54" y="2.454"/></g></svg>
-        <a class="fill-current text-gray-200" href="tags/{{tag|url}}">{{tag}}</a></span>
-        {%endfor%}
-      </p>
-      <p class="absolute bottom-0 right-0 mb-4 text-lg text-gray-800"><a class="mr-4 rounded-md bg-green-300 p-2" href="{{item.url|url}}#disqus_thread">Post a comment</a></p>
-      <div class="absolute rise bg-gray-900 w-full" >
-        <p class="text-center block text-lg md:text-xl" >{{item.data.description}}</p>
-        <a class="text-center block text-base md:text-lg" href="{{item.url}}"><button class="p-1 rounded-md bg-green-400 hover:bg-green-700 text-gray-800">Read More</button></a>
+  				url({{item.data.heroImage}});width:375px;">
+      <div class="relative" >
+        <a class="relative block py-16 mt-10 font-bold text-center text-gray-200 textGradient_sky" style="font-size:3vw;" href="{{item.url | url}}">{{item.data.title}}</a>
+        <p class="absolute bottom-0 left-0 mb-4 text-base">
+          {% for tag in item.data.tags %}
+          <span class="p-1 ml-2 border-green-600 rounded-md hover:bg-orange-500 border-1">
+          <svg class="inline-block" height="21" width="21" xmlns="http://www.w3.org/2000/svg">
+          <g fill="none" fill-rule="evenodd" transform="translate(2 3)">
+          <path d="M11.454.954h3.586a2 2 0 012 2V6.54a1 1 0 01-.293.707L9.454 14.54a2 2 0 01-2.828 0l-3.172-3.172a2 2 0 010-2.828l7.293-7.293a1 1 0 01.707-.293z" stroke="#2a2e3b" stroke-linecap="round" stroke-linejoin="round"/><path d="M6.04 13.954l-.903.602a2 2 0 01-2.982-.962l-1.53-4.08a2 2 0 01.844-2.417l8.57-5.143" stroke="#2a2e3b" stroke-linecap="round" stroke-linejoin="round"/><rect fill="#2a2e3b" height="2" rx="1" width="2" x="13.54" y="2.454"/></g></svg>
+          <a class="text-gray-200 fill-current" href="tags/{{tag|url}}">{{tag}}</a></span>
+          {%endfor%}
+        </p>
+        <p class="absolute bottom-0 right-0 mb-4 text-lg text-gray-800"><a class="p-2 mr-4 bg-green-300 rounded-md" href="{{item.url|url}}#disqus_thread">Post a comment</a></p>
+        <div class="absolute w-full bg-gray-900 rise" >
+          <p class="block text-lg text-center md:text-xl" >{{item.data.description}}</p>
+          <a class="block text-base text-center md:text-lg" href="{{item.url}}"><button class="p-1 text-gray-800 bg-green-400 rounded-md hover:bg-green-700">Read More</button></a>
+        </div>
       </div>
     </div>
   {% endfor %}
